@@ -1,11 +1,11 @@
-applications:
-- services:
-- hackathon-starter-db:
-host: bluemix-hack-sl
-disk: 1024M
-name: bluemix-hack-sl
-command: nod app.js
-path: .
-domain: bluemix.net
-mem: 512M
-instances: 1
+applications :
+- services :
+  - hackathon-starter-db
+  host: bluemix-sl-hack
+  disk: 1024M
+  name: bluemix-sl-hack
+  command: nod app.js
+  path: .
+  domain: bluemix.net
+  mem: 512M
+  instances: 1
