@@ -19,9 +19,23 @@
  * IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT  IMPORTANT
  */
 
+//fixup to retrieve MongoDb creds from Bluemix if configured
+var getBluemixDbUri = function() {
+	var dbUri = "";
+	if (process.env.VCAP_SERVICES){
+		var env = JSON.parse(process.env.VCAP_SERVICES);
+		var mongoVersion = 'mongolab';
+		if (env[mongoVersion]){
+			dbUri = env[mongoVersion][0].credentials.uri;
+		}
+	}
+	if (dbUri === "") return null;
+	else return dbUri;
+};
+
 module.exports = {
 
-  db: process.env.MONGODB || 'mongodb://localhost:27017/test',
+  db: getBluemixDbUri() || 'mongodb://localhost:27017/test',
 
   sessionSecret: process.env.SESSION_SECRET || 'Your Session Secret goes here',
 
