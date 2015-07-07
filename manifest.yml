@@ -4,7 +4,7 @@ applications :
   host: bluemix-sl-hack
   disk: 1024M
   name: bluemix-sl-hack
-  command: nod app.js
+  command: node app.js
   path: .
   domain: mybluemix.net
   mem: 512M
